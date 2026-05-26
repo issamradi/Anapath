@@ -1,3 +1,5 @@
+
+
 <style>
 :root{
   --font-sans: Inter, Arial, sans-serif;
@@ -21,10 +23,9 @@ body{
   background:#121212;
   margin:0;
   padding:24px;
-  font-family: var(--font-sans);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-.wrap{padding:1rem 0; max-width: 800px; margin: 0 auto;}
+.wrap{padding:1rem 0}
 .header{padding:1rem 1.25rem;background:var(--color-background-secondary);border-radius:var(--border-radius-lg);border:0.5px solid var(--color-border-tertiary);margin-bottom:1.25rem}
 .header h1{font-size:18px;font-weight:500;color:var(--color-text-primary);margin-bottom:3px}
 .header p{font-size:12px;color:var(--color-text-secondary)}
@@ -64,19 +65,34 @@ body{
 .custom-cb{width:18px;height:18px;min-width:18px;border-radius:3px;border:0.5px solid var(--color-border-secondary);display:flex;align-items:center;justify-content:center;margin-top:1px;transition:all .12s;background:var(--color-background-primary)}
 .opt-label.sel .custom-cb{background:var(--color-text-primary);border-color:var(--color-text-primary)}
 .opt-label.sel .custom-cb::after{content:'';display:block;width:5px;height:9px;border:1.5px solid var(--color-background-primary);border-top:none;border-left:none;transform:rotate(45deg) translate(-1px,-1px)}
-.opt-label.correct{ background:#EAF3DE; border-color:#639922; color:#111;}
+.opt-label.correct{ background:#EAF3DE;
+  border-color:#639922;
+  color:#111;}
 .opt-label.correct .custom-cb{background:#639922;border-color:#639922}
 .opt-label.correct .custom-cb::after{content:'';display:block;width:5px;height:9px;border:1.5px solid white;border-top:none;border-left:none;transform:rotate(45deg) translate(-1px,-1px)}
-.opt-label.wrong{ background:#FCEBEB; border-color:#E24B4A; color:#111;}
+.opt-label.wrong{ background:#FCEBEB;
+  border-color:#E24B4A;
+  color:#111;}
 .opt-label.wrong .custom-cb{background:#E24B4A;border-color:#E24B4A}
 .opt-label.wrong .custom-cb::after{content:'✗';color:white;font-size:11px;font-style:normal;line-height:1}
-.opt-label.missed{ background:#FAEEDA; border-color:#BA7517; color:#111;}
+.opt-label.missed{ background:#FAEEDA;
+  border-color:#BA7517;
+  color:#111;}
 .opt-label.missed .custom-cb{background:#BA7517;border-color:#BA7517}
 .opt-label.missed .custom-cb::after{content:'✓';color:white;font-size:11px;line-height:1}
 .opt-letter{font-size:12px;color:var(--color-text-secondary);min-width:14px;margin-top:1px}
 .opt-label.sel .opt-letter,.opt-label.correct .opt-letter,.opt-label.wrong .opt-letter,.opt-label.missed .opt-letter{color:inherit}
-.opt-text{ font-size:13px; color:#f5f5f5; line-height:1.5 }
-.opt-label.correct .opt-text, .opt-label.wrong .opt-text, .opt-label.missed .opt-text{ color:#111; }
+.opt-text{
+  font-size:13px;
+  color:#f5f5f5;
+  line-height:1.5
+}
+
+.opt-label.correct .opt-text,
+.opt-label.wrong .opt-text,
+.opt-label.missed .opt-text{
+  color:#111;
+}
 .btn-check{width:100%;padding:9px;font-size:13px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-secondary);color:var(--color-text-primary);cursor:pointer;transition:all .12s}
 .btn-check:hover{background:var(--color-background-primary);border-color:var(--color-border-primary)}
 .btn-check:disabled{opacity:.4;cursor:not-allowed}
@@ -86,6 +102,8 @@ body{
 </style>
 
 <div class="wrap">
+<h2 class="sr-only"></h2>
+
 <div class="header">
   <h1>QCM Anapath — Thèmes sélectionnés</h1>
   <p>Cancer du sein · Tumeurs hépatiques · Cancer colorectal · Cancer du poumon · Tumeur de l'ovaire · Polype &amp; polyposes</p>
@@ -110,9 +128,9 @@ body{
 </div>
 
 <div class="legend">
-  <div class="leg"><div class="leg-sq" style="background:#EAF3DE;border:0.5px solid #639922"></div>Bonne réponse</div>
+  <div class="leg"><div class="leg-sq" style="background:#EAF3DE;border:0.5px solid #639922"></div>Bonne réponse sélectionnée</div>
   <div class="leg"><div class="leg-sq" style="background:#FCEBEB;border:0.5px solid #E24B4A"></div>Mauvaise réponse</div>
-  <div class="leg"><div class="leg-sq" style="background:#FAEEDA;border:0.5px solid #BA7517"></div>Réponse manquée</div>
+  <div class="leg"><div class="leg-sq" style="background:#FAEEDA;border:0.5px solid #BA7517"></div>Bonne réponse manquée</div>
 </div>
 
 <div id="qlist"></div>
@@ -120,7 +138,6 @@ body{
 
 <script>
 const QS=[
-  // === AUTRES THÈMES CONSERVÉS ===
   {id:1,t:'sein',y:'2025 Normal',tx:"L'adénofibrome mammaire :",tp:'qcm',o:['Est une tumeur fibro-épithéliale','Se présente comme une opacité mal limitée classée ACR5 à la mammographie','Est la tumeur bénigne la plus fréquente du sein','Survient à tout âge','Se présente comme une opacité nodulaire bien limitée à la mammographie'],a:[0,2,3,4]},
   {id:2,t:'sein',y:'2025 Normal',tx:"Les lésions bénignes élémentaires du sein comprennent :",tp:'qcm',o:['La mastite lymphocytaire','L\'adénose micro glandulaire','Les papillomes intra canalaires','Les adénofibromes','Le carcinome mammaire infiltrant de type micropapillaire'],a:[0,1,2,3]},
   {id:3,t:'sein',y:'2025 Normal',tx:"L'évaluation du grade de Scarff Bloom Richardson (SBR) est fondée sur 3 critères :",tp:'qcm',o:['Le nombre de mitoses','Les atypies cytonucléaires','La stroma réaction','La différentiation glandulaire','Les emboles vasculaires'],a:[0,1,3]},
@@ -136,6 +153,10 @@ const QS=[
   {id:13,t:'polype',y:'2025 Normal',tx:"Le polype hyperplasique est :",tp:'qcm',o:['Se voit toujours chez l\'enfant','Siège essentiellement au niveau du rectum','Correspond à une élevure lenticulaire macroscopique','Évolue vers un carcinome dans 90% des cas','De pronostic défavorable'],a:[1,2]},
   {id:14,t:'colorectal',y:'2025 Normal',tx:"Cochez les facteurs pronostiques d'un adénocarcinome colorectal :",tp:'qcm',o:['Les emboles veineux','L\'emboles lymphatique','La taille tumorale','Le budding','L\'envahissement ganglionnaire'],a:[0,1,3,4]},
   {id:15,t:'colorectal',y:'2025 Normal',tx:"Le compte rendu anatomopathologique en matière de cancer rectal doit préciser :",tp:'qcm',o:['La limite circonférentielle','Le degré de différentiation des adénocarcinomes','La présence ou non d\'emboles vasculaires','Le type histologique','L\'état des limites d\'exérèse chirurgicales'],a:[0,1,2,3,4]},
+  {id:16,t:'hepatique',y:'2025 Normal',tx:"À propos des tumeurs hépatiques :",tp:'qcm',o:['Elles sont définies uniquement comme des proliférations se développant aux dépens des constituants du tissu hépatique','Elles peuvent être secondaires','Sont souvent associées à une cirrhose hépatique si elles sont primitives','Peuvent être au dépend des éléments vasculaires du foie','Peuvent être au dépend des voies biliaires intra-hépatiques'],a:[1,2,3,4]},
+  {id:17,t:'hepatique',y:'2025 Normal',tx:"Concernant l'origine tissulaire des tumeurs primitives hépatiques :",tp:'qcm',o:['Le carcinome hépatocellulaire provient des structures hépatocytaires','Le cholangiocarcinome provient des structures biliaires','Les structures vasculaires ne donnent pas de tumeurs primitives hépatiques','Il peut exister des tumeurs mixtes','Il peut exister des tumeurs d\'origine embryonnaire'],a:[0,1,3,4]},
+  {id:18,t:'hepatique',y:'2025 Normal',tx:"L'hépatoblastome :",tp:'qcm',o:['Est une tumeur embryonnaire de l\'enfant','Se caractérise biologiquement par une augmentation sérique de l\'AFP','Se révèle par une hépatomégalie tumorale','L\'étude anatomopathologique de la biopsie hépatique permet le diagnostic','Son traitement est basé sur la chirurgie avec possibilité de chimiothérapie'],a:[0,1,2,3,4]},
+  {id:19,t:'hepatique',y:'2025 Normal',tx:"La localisation secondaire au niveau hépatique d'une tumeur maligne :",tp:'qcm',o:['Est le plus souvent multinodulaire','Est rare','Peut être révélatrice d\'un cancer','Est plus fréquente qu\'une tumeur primitive','Est le plus souvent due à un néoplasme d\'origine digestive'],a:[0,2,3,4]},
   {id:20,t:'poumon',y:'2025 Normal',tx:"Le carcinome épidermoïde du poumon :",tp:'qcm',o:['Est souvent périphérique','Constitue un bourgeon endobronchique','Peut être nécrosé et excavé','Peut être bien, moyennement ou peu différencié','Comporte des cellules tumorales exprimant l\'anticorps anti P40 en immunohistochimie'],a:[1,2,3,4]},
   {id:21,t:'poumon',y:'2025 Normal',tx:"L'aspect microscopique du carcinome à petites cellules du poumon montre :",tp:'qcm',o:['Des cellules de petite taille, fragiles et écrasées','Des structures glandulaires','Un index mitotique élevé','Des globes cornés','Nécrose tumorale'],a:[0,2,4]},
   {id:22,t:'sein',y:'2024 Rattrapage',tx:"Un carcinome mammaire infiltrant de type non spécifique :",tp:'qcm',o:['Est l\'équivalent d\'une néoplasie mammaire intra épithéliale de haut grade','Est gradé selon SBR','Est une prolifération tumorale maligne confinée au canal galactophorique','Ne donne qu\'exceptionnellement des métastases hépatiques','Nécessite le recours à l\'étude immunohistochimique pour établir la classification moléculaire'],a:[1,4]},
@@ -146,100 +167,47 @@ const QS=[
   {id:27,t:'colorectal',y:'2024 Rattrapage',tx:"Quels sont les facteurs histopronostiques du cancer rectal :",tp:'qcm',o:['La taille tumorale','La limite circonférentielle','Le stade pTNM','Le grade tumorale','Les emboles vasculaires'],a:[0,1,2,3,4]},
   {id:28,t:'polype',y:'2024 Rattrapage',tx:"L'adénome colorectal :",tp:'qcm',o:['Peut être pédiculé ou sessile','Peut être multiple','Sa résection par coloscopie permet d\'éviter l\'évolution vers un carcinome infiltrant','Le type tubuleux ne cancérise jamais','Peut être en dysplasie de haut ou de bas grade'],a:[0,1,2,4]},
   {id:29,t:'polype',y:'2024 Rattrapage',tx:"Le polype colorectal :",tp:'qcm',o:['Est un terme macroscopique','Correspond à une entité anatomoclinique bien précise','Est une lésion en relief sur la muqueuse digestive','Possède toujours un risque d\'évolution vers un cancer','Seul l\'examen histologique permet d\'en préciser le type'],a:[0,2,4]},
+  {id:30,t:'hepatique',y:'2024 Rattrapage',tx:"La localisation secondaire au niveau hépatique d'une tumeur maligne :",tp:'qcm',o:['Est plus fréquente qu\'une tumeur primitive','Est le plus souvent due à un néoplasme d\'origine digestive','Est le plus souvent multinodulaire','Est rare','Peut être révélatrice d\'un cancer'],a:[0,1,2,4]},
   {id:31,t:'poumon',y:'2024 Rattrapage',tx:"Les carcinomes pulmonaires non à petites cellules regroupent :",tp:'qcm',o:['Le carcinome épidermoïde d\'origine pulmonaire','L\'adénocarcinome pulmonaire','Le carcinome pulmonaire à petites cellules (CPC)','La métastase pulmonaire d\'origine mammaire','Le sarcome pulmonaire'],a:[0,1]},
   {id:32,t:'poumon',y:'2024 Rattrapage',tx:"Le carcinome épidermoïde du poumon :",tp:'qcm',o:['Est souvent périphérique','Peut être nécrosé et excavé','Est bien, moyennement ou peu différencié','Peut être confondu avec une métastase','Est souvent lié au tabagisme'],a:[1,2,4]},
   {id:33,t:'sein',y:'2024 1er Excep',tx:"Rôle du pathologiste dans la prise en charge du cancer du sein :",tp:'qcm',o:['Assure le diagnostic de certitude selon la classification de l\'OMS 2019','Fournit les éléments pronostiques histologiques et moléculaires','Évalue les facteurs de réponse prédictifs aux thérapies ciblées','Participe avec les radiologues, chirurgiens et cancérologues à l\'établissement de la démarche thérapeutique','Précise dans les cas de chirurgie conservatrice l\'étendu et les limites d\'exérèse'],a:[0,1,2,3,4]},
   {id:34,t:'ovaire',y:'2024 1er Excep',tx:"Concernant les tumeurs épithéliales primitives de l'ovaire :",tp:'qcm',o:['Sont les tumeurs les moins fréquentes de l\'ovaire','Proviennent des cellules germinales','Sont essentiellement malignes','Sont classées en fonction du type cellulaire et du degré de malignité','Incluent les tératomes immatures'],a:[3]},
+  {id:35,t:'hepatique',y:'2024 3e Excep',tx:"À propos des tumeurs hépatiques :",tp:'qcm',o:['Elles sont définies comme l\'ensemble des proliférations tumorales bénignes ou malignes primitives ou secondaires se développant au niveau du foie','Elles peuvent être secondaires','La nature du parenchyme hépatique adjacent à la tumeur est importante pour déterminer le type tumoral','Peuvent être au dépend des éléments vasculaires du foie','Peuvent être au dépend des voies biliaires intra-hépatiques'],a:[0,1,2,3,4]},
   {id:36,t:'colorectal',y:'2024 3e Excep',tx:"Le compte rendu anatomopathologique en matière de cancer rectal doit préciser :",tp:'qcm',o:['La limite circonférentielle','Le degré de différentiation des adénocarcinomes','La présence ou non d\'emboles vasculaires','Le type histopathologique','L\'état des limites d\'exérèse chirurgicales'],a:[0,1,2,3,4]},
   {id:37,t:'poumon',y:'2024 3e Excep',tx:"Le carcinome à petites cellules pulmonaire :",tp:'qcm',o:['Est la forme la plus agressive des tumeurs neuroendocrines pulmonaires','Son traitement est essentiellement chirurgical','Donne des métastases cérébrales et osseuses précoces','Est généralement non associée au tabac','Pose des problèmes de diagnostic différentiel avec le lymphome'],a:[0,2,4]},
   {id:38,t:'sein',y:'2023 Normal',tx:"Le carcinome infiltrant de type non spécifique NST :",tp:'qcm',o:['Est le type histologique le plus fréquent des cancers du sein','Est anciennement appelé carcinome canalaire infiltrant','A tendance à réaliser une atteinte des ganglions axillaires','L\'âge moyen de diagnostic est de 20 ans','Peut être bilatéral'],a:[0,1,2,4]},
   {id:39,t:'sein',y:'2023 Normal',tx:"L'évaluation du grade SBR est fondée sur (3 propositions justes) :",tp:'qcm',o:['La différentiation glandulaire','Les enroulements périnerveux','Le pourcentage du Ki67','Le nombre de mitoses','Le degré des atypies cyto-nucléaires'],a:[0,3,4]},
   {id:40,t:'ovaire',y:'2023 Normal',tx:"Concernant les tumeurs germinales de l'ovaire :",tp:'qcm',o:['Le tératome ovarien mature est le plus fréquent','Proviennent du revêtement cœlomique de l\'ovaire','Dérivent des cellules germinales ovariennes','Le tératome mature peut cancériser','Sont retrouvés le plus souvent chez la femme âgée de 80 ans'],a:[0,2,3]},
+  {id:41,t:'hepatique',y:'2023 Normal',tx:"Concernant la métastase hépatique :",tp:'qcm',o:['L\'origine la plus fréquente est digestive','L\'étude immunohistochimique peut aider dans la recherche du primitif','L\'orientation vers un primitif nécessite une corrélation avec les données cliniques et paracliniques','Elle survient essentiellement sur un foie non cirrhotique','Il s\'agit le plus souvent d\'une lésion unique'],a:[0,1,2,3]},
   {id:42,t:'ovaire',y:'2023 Juin',tx:"Le Cystadénocarcinome séreux de haut grade de l'ovaire :",tp:'qcm',o:['Est souvent étendu et d\'évolution rapide','Est caractérisé par une mutation des gènes BRAF, KRAS, PTNE','Est caractérisé par une mutation des gènes P53, BRCA','Peut naître de novo ou à partir de lésions de STICs','Est souvent une évolution d\'une tumeur borderline de l\'ovaire'],a:[0,2,3]},
   {id:43,t:'polype',y:'2023 Juin',tx:"Entourer les facteurs incriminés dans la genèse d'un adénome colorectal :",tp:'qcm',o:['La consommation excessive de viande rouge','La consommation excessive de légumes et de fruits','L\'intoxication alcoolo-tabagique','La carence en folates','La prise régulière d\'aspirine'],a:[0,2,3]},
   {id:44,t:'polype',y:'2023 Juin',tx:"Cochez les nouveaux facteurs pronostiques d'un adénocarcinome colorectal :",tp:'qcm',o:['Les emboles veineux','L\'emboles lymphatique','La taille tumorale','Le budding','L\'envahissement ganglionnaire'],a:[0,1,3,4]},
   {id:45,t:'colorectal',y:'2023 Juin',tx:"Le compte rendu anatomopathologique en matière de cancer rectal doit préciser :",tp:'qcm',o:['La limite circonférentielle','Le degré de différentiation des adénocarcinomes','La présence ou non d\'emboles vasculaires','Le type histologique','L\'état des limites d\'exérèse chirurgicales'],a:[0,1,2,3,4]},
+  {id:46,t:'hepatique',y:'2023 Juin',tx:"À propos des tumeurs hépatiques :",tp:'qcm',o:['Elles sont définies uniquement comme des proliférations se développant aux dépens des constituants du tissu hépatique','Elles peuvent être secondaires','Sont souvent associées à une cirrhose hépatique si elles sont primitives','Peuvent être au dépend des éléments vasculaires du foie','Peuvent être au dépend des voies biliaires intra-hépatiques'],a:[1,2,3,4]},
+  {id:47,t:'hepatique',y:'2023 Juin',tx:"La localisation secondaire au niveau hépatique d'une tumeur maligne :",tp:'qcm',o:['Est plus fréquente qu\'une tumeur primitive','Est le plus souvent due à un néoplasme d\'origine digestive','Est le plus souvent multinodulaire','Est rare','Peut être révélatrice d\'un cancer'],a:[0,1,2,4]},
   {id:48,t:'sein',y:'2023 Juin',tx:"L'évaluation du grade de Scarff Bloom Richardson (SBR) est fondée sur 3 critères :",tp:'qcm',o:['La différentiation glandulaire','Les embols vasculaires','Le nombre de mitoses','Les atypies cyto-nucléaires','La stroma réaction'],a:[0,2,3]},
   {id:49,t:'sein',y:'2023 Juin',tx:"Entourer les cancers du sein HER2 positifs et éligibles à un traitement par la trastuzumab :",tp:'qcm',o:['Her 2 (0)','Her 2 (1+)','Her 2 (2+) non amplifié en hybridation in situ','Her 2 (3+)','Her 2 (2+) amplifié en hybridation in situ'],a:[3,4]},
   {id:50,t:'ovaire',y:'2021 Normal',tx:"Concernant les tumeurs épithéliales primitives de l'ovaire :",tp:'qcm',o:['Sont essentiellement bénignes','Proviennent du revêtement cœlomique','Sont classées en fonction du type cellulaire et du degré de malignité','Incluent le choriocarcinome ovarien','Incluent la tumeur vitelline ovarienne'],a:[1,2]},
   {id:51,t:'ovaire',y:'2021 Normal',tx:"Les facteurs de risque d'un carcinome primitif de l'ovaire sont :",tp:'qcm',o:['Antécédents familiaux de cancer de l\'ovaire','Mutations des gènes BRCA','Hormonothérapie substitutive','Syndrome de Lynch','Nulliparité'],a:[0,1,2,3,4]},
   {id:52,t:'ovaire',y:'2021 Normal',tx:"Parmi les tumeurs épithéliales de l'ovaire on note :",tp:'qcm',o:['La tumeur mucineuse borderline','Le cystadénocarcinome séreux','Le choriocarcinome','Les tératomes matures','La tumeur de Brenner bénigne'],a:[0,1,4]},
+  {id:53,t:'hepatique',y:'2021 Normal',tx:"Lors d'une localisation d'une métastase hépatique :",tp:'qcm',o:['L\'origine la plus fréquente est osseuse','L\'étude immunohistochimique peut aider dans la recherche du primitif','Elle survient essentiellement sur un foie non cirrhotique','Il s\'agit le plus souvent d\'une lésion unique','Il s\'agit le plus souvent de lésions multiples de taille variable'],a:[1,2,4]},
   {id:54,t:'sein',y:'2021 Normal',tx:"L'évaluation du grade de Scarff Bloom Richardson est fondée sur :",tp:'qcm',o:['La différentiation glandulaire','La stroma réaction','Les embols vasculaires','Le nombre de mitoses','Les atypies cyto-nucléaires'],a:[0,3,4]},
   {id:55,t:'colorectal',y:'2021 Normal',tx:"Les critères de risque de malignité devant un adénome colorectal englobent :",tp:'qcm',o:['La composante villeuse prédominante','Le sexe masculin','Le siège rectal','La durée d\'évolution longue','La taille > 1cm'],a:[0,1,2,3,4]},
   {id:56,t:'polype',y:'2021 Normal',tx:"La polypose adénomateuse familiale (PAF) :",tp:'qcm',o:['Se caractérise par une instabilité des microsatellites','Prédispose aux cancers colorectaux','Est due à une mutation du gène APC','Évolue vers une cancérisation inéluctable','Peut être traitée par une colectomie large'],a:[1,2,3,4]},
   {id:57,t:'poumon',y:'2021 Normal',tx:"Le rôle de l'anatomopathologiste dans la prise en charge de l'adénocarcinome primitif du poumon :",tp:'qcm',o:['D\'évaluer du stade de la maladie','De fournir des éléments théranostiques relatifs à la sensibilité tumorale aux inhibiteurs de tyrosine kinase','De réaliser des biopsies transpariétales scanno-guidées','De préciser le type histologique','Rechercher de réarrangement du gène ALK'],a:[0,1,3,4]},
   {id:58,t:'poumon',y:'2020 Normal',tx:"Le rôle de l'anatomopathologiste dans la prise en charge du carcinome primitif du poumon :",tp:'qcm',o:['D\'évaluer du stade de la maladie','De fournir des éléments théranostiques relatifs à la sensibilité tumorale aux inhibiteurs de tyrosine kinase','De réaliser des biopsies transpariétales scanno-guidées','De préciser le type histologique','Rechercher la mutation du gène EGFR'],a:[0,1,3,4]},
+  {id:59,t:'hepatique',y:'2020 Normal',tx:"La localisation secondaire au niveau hépatique d'une tumeur maligne :",tp:'qcm',o:['Est plus fréquente qu\'une tumeur primitive','Est le plus souvent due à un néoplasme d\'origine digestive','Est le plus souvent multinodulaire','L\'immunohistochimie à elle seule peut toujours déterminer le primitif avec précision','Peut être révélatrice d\'un cancer'],a:[0,1,2,4]},
   {id:60,t:'sein',y:'2020 Normal',tx:"Entourer les cancers du sein HER2 négatifs :",tp:'qcm',o:['Her 2 (0)','Her 2 (1+)','Her 2 (2+) non amplifié en hybridation in situ','Her 2 (3+)','Her 2 (2+) amplifié en hybridation in situ'],a:[0,1,2]},
   {id:61,t:'poumon',y:'2019 Jan',tx:"Les deux principaux anticorps orientant vers le diagnostic d'un lymphome hodgkinien ne concernent pas notre sujet — le carcinome épidermoïde du poumon exprime par immunohistochimie :",tp:'qcm',o:['TTF1','P63','P40','CD15','CD30'],a:[1,2]},
   {id:62,t:'sein',y:'2019 Jan',tx:"Le grading de SBR du carcinome infiltrant du sein se base sur :",tp:'qcm',o:['La localisation','L\'architecture tubulaire','Les atypies nucléaires des cellules tumorales','L\'index mitotique','La présence d\'emboles vasculaires'],a:[1,2,3]},
+  {id:63,t:'hepatique',y:'2019 Jan',tx:"Le carcinome hépatocellulaire fibrolamellaire :",tp:'qcm',o:['Se caractérise par une tendance aux métastases','Survient sur un foie sain','Est la tumeur hépatique maligne primitive la plus fréquente','Se caractérise par une fibrose lamellaire','Est de meilleur pronostic que le carcinome hépatocellulaire classique'],a:[0,1,3,4]},
   {id:64,t:'polype',y:'2019 Juin',tx:"L'adénome tubuleux :",tp:'qcm',o:['Est le type le plus fréquent (80%)','Est fait de 75% des structures glandulaires','Comporte des digitations munies d\'un axe conjonctif','Sa surface reproduit les villosités intestinales','Risque d\'être cancérisé'],a:[0,1,4]},
   {id:65,t:'colorectal',y:'2019 Juin',tx:"Le compte rendu anatomopathologique en matière de cancer rectal doit préciser :",tp:'qcm',o:['La limite circonférentielle','Le degré de différentiation des adénocarcinomes','La présence ou non d\'emboles vasculaires','Le type histologique','L\'état des limites d\'exérèse chirurgicales'],a:[0,1,2,3,4]},
+  {id:66,t:'hepatique',y:'2019 Juin',tx:"Concernant l'origine tissulaire des tumeurs primitives hépatiques :",tp:'qcm',o:['Le carcinome hépatocellulaire provient des structures hépatocytaires','Le cholangiocarcinome provient des structures biliaires','Les structures vasculaires ne donnent pas de tumeurs primitives hépatiques','Il peut exister des tumeurs mixtes','Il peut exister des tumeurs d\'origine embryonnaire'],a:[0,1,3,4]},
   {id:67,t:'poumon',y:'2019 Juin',tx:"Sur pièce opératoire d'un carcinome pulmonaire, le pathologiste doit préciser :",tp:'qcm',o:['La taille de la tumeur','L\'état de la recoupe bronchique','L\'envahissement ou non du curage ganglionnaire','Le type histologique de la tumeur','La présence ou non d\'emboles vasculaires'],a:[0,1,2,3,4]},
   {id:68,t:'sein',y:'2018 Normal',tx:"Les facteurs pronostiques biologiques du carcinome infiltrant du sein sont :",tp:'qcm',o:['Le stroma tumoral','Les récepteurs hormonaux','Le contingent in situ extensif','L\'envahissement ganglionnaire','Le statut HER2'],a:[1,3,4]},
   {id:69,t:'poumon',y:'2018 Normal',tx:"Le rôle de l'anatomopathologiste dans la prise en charge du carcinome primitif du poumon :",tp:'qcm',o:['Chercher la mutation du gène EGFR au niveau de la tumeur','De fournir les éléments pronostiques','De différencier entre un adénocarcinome et un carcinome épidermoïde','De fournir des éléments théranostiques relatifs à la sensibilité tumorale aux inhibiteurs de tyrosine kinase','De réaliser des biopsies transpariétales scanno-guidées'],a:[0,1,2,3]},
   {id:70,t:'ovaire',y:'2019 Juin',tx:"Parmi les tumeurs épithéliales malignes primitives de l'ovaire, quelle est la tumeur la plus fréquente ?",tp:'qcu',o:['Séreuses','Mucineuses','Endométrioïdes','À cellules claires','À cellules transitionnelles'],a:[0]},
-
-  // === NOUVELLES QUESTIONS TUMEURS HÉPATIQUES AJOUTÉES ===
-  // Session Juin 2025
-  {id:101, t:'hepatique', y:'2025 Juin', tx:"À propos des tumeurs hépatiques :", tp:'qcm', o:["Elles sont définies uniquement comme l'ensemble des proliférations tumorales se développant au dépend des constituants du tissu hépatique", "Elles peuvent être secondaires", "Sont souvent associées à une cirrhose hépatique si elles sont primitives", "Peuvent être au dépend des éléments vasculaires du foie", "Peuvent être au dépend des voies biliaires intra-hépatiques"], a:[1,2,3,4]},
-  {id:102, t:'hepatique', y:'2025 Juin', tx:"Concernant l'origine tissulaire des tumeurs primitives hépatiques :", tp:'qcm', o:["Le carcinome hépatocellulaire provient des structures hépatocytaires", "Le cholangiocarcinome provient des structures biliaires", "Les structures vasculaires ne donnent pas de tumeurs primitives hépatiques", "Il peut exister des tumeurs mixtes", "Il peut exister des tumeurs d'origine embryonnaire"], a:[0,1,3,4]},
-  {id:103, t:'hepatique', y:'2025 Juin', tx:"L'hépatoblastome :", tp:'qcm', o:["Est une tumeur embryonnaire de l'enfant", "Se caractérise biologiquement par une augmentation sérique de l'AFP", "Se révèle par une hépatomégalie tumorale", "L'étude anatomopathologique de la biopsie hépatique permet le diagnostic", "Son traitement est basé sur la chirurgie avec possibilité de chimiothérapie"], a:[0,1,2,3,4]},
-  {id:104, t:'hepatique', y:'2025 Juin', tx:"La localisation secondaire au niveau hépatique d'une tumeur maligne :", tp:'qcm', o:["Est le plus souvent multinodulaire", "Est rare", "Peut-être révélatrice d'un cancer", "Est plus fréquente qu'une tumeur primitive", "Est le plus souvent due à un néoplasme d'origine digestive"], a:[0,2,3,4]},
-  
-  // Session Juin 2024 (Rattrapage)
-  {id:105, t:'hepatique', y:'2024 Rattrapage', tx:"Concernant l'origine tissulaire des tumeurs primitives hépatiques :", tp:'qcm', o:["Le carcinome hépatocellulaire provient des structures hépatocytaires", "Le cholangiocarcinome provient des structures biliaires", "Les structures vasculaires ne donnent pas de tumeurs primitives hépatiques", "Il peut exister des tumeurs mixtes", "Il peut exister des tumeurs d'origine embryonnaire pédiatriques"], a:[0,1,3,4]},
-  {id:106, t:'hepatique', y:'2024 Rattrapage', tx:"À propos des tumeurs hépatiques :", tp:'qcm', o:["La découverte peut être lors du suivi d'une cirrhose", "La découverte peut être lors du suivi d'un cancer mammaire", "L'imagerie permet de préciser la taille, le siège, la vascularisation et l'envahissement des structures adjacentes", "Sont toujours primitives", "Sont toujours de nature épitheliale"], a:[0,1,2]},
-  {id:107, t:'hepatique', y:'2024 Rattrapage', tx:"La localisation secondaire au niveau hépatique d'une tumeur maligne :", tp:'qcm', o:["Est plus fréquente qu'une tumeur primitive", "Est le plus souvent due à un néoplasme d'origine digestive", "Est le plus souvent multinodulaire", "Est rare", "Peut-être révélatrice d'un cancer"], a:[0,1,2,4]},
-  
-  // Session Septembre 2024 (1ère Exceptionnelle)
-  {id:108, t:'hepatique', y:'2024 1er Excep', tx:"Parmi les facteurs de risque du carcinome hépatocellulaire hépatique, on retrouve :", tp:'qcm', o:["Un âge inférieur à 50 ans", "La cirrhose récente", "Un patient infecté au virus de l'hépatite B", "La cirrhose macronodulaire", "Le sexe masculin"], a:[2,3,4]},
-  {id:109, t:'hepatique', y:'2024 1er Excep', tx:"L'hépatoblastome :", tp:'qcm', o:["Atteint surtout l'enfant", "Se caractérise par une augmentation sérique de la yGT (gamma GT)", "Survient sur un foie sain", "L'imagerie est suffisante pour porter le diagnostic", "Se révèle par une hépatomégalie tumorale"], a:[0,2,4]},
-  {id:110, t:'hepatique', y:'2024 1er Excep', tx:"Concernant l'origine tissulaire des tumeurs primitives hépatiques :", tp:'qcm', o:["Le carcinome hépatocellulaire provient des structures hépatocytaires", "Le cholangiocarcinome provient des structures biliaires", "Les structures vasculaires ne donnent pas de tumeurs primitives hépatiques", "Il peut exister des tumeurs mixtes", "Il peut exister des tumeurs d'origine embryonnaire"], a:[0,1,3,4]},
-  {id:111, t:'hepatique', y:'2024 1er Excep', tx:"La localisation secondaire au niveau hépatique d'une tumeur maligne :", tp:'qcm', o:["Est plus fréquente qu'une tumeur primitive", "Est le plus souvent due à un néoplasme d'origine digestive", "L'immunohistochimie à elle seule peut toujours déterminer le primitif avec précision", "Peut-être révélatrice d'un cancer", "Est le plus souvent multinodulaire"], a:[0,1,3,4]},
-  
-  // Session 2024 (2ème Exceptionnelle)
-  {id:112, t:'hepatique', y:'2024 2e Excep', tx:"Concernant l'origine tissulaire des tumeurs primitives hépatiques :", tp:'qcm', o:["Le carcinome hépatocellulaire provient des structures hépatocytaires", "Le cholangiocarcinome provient des structures biliaires", "Les structures vasculaires ne donnent pas de tumeurs primitives hépatiques", "Il peut exister des tumeurs mixtes", "Il peut exister des tumeurs d'origine embryonnaire"], a:[0,1,3,4]},
-  {id:113, t:'hepatique', y:'2024 2e Excep', tx:"La localisation secondaire au niveau hépatique d'une tumeur maligne :", tp:'qcm', o:["Est plus fréquente qu'une tumeur primitive", "Est le plus souvent due à un néoplasme d'origine digestive", "Est le plus souvent multinodulaire", "Est rare", "Peut-être révélatrice d'un cancer"], a:[0,1,2,4]},
-  
-  // Session Décembre 2024 (3ème Exceptionnelle)
-  {id:114, t:'hepatique', y:'2024 3e Excep', tx:"La localisation secondaire au niveau hépatique d'une tumeur maligne :", tp:'qcm', o:["Est plus fréquente qu'une tumeur primitive", "Est le plus souvent due à un carcinome d'origine digestive", "L'immunohistochimie peut aider à déterminer le primitif", "Peut-être révélatrice d'un cancer", "Est le plus souvent multi nodulaire"], a:[0,1,2,3,4]},
-  {id:115, t:'hepatique', y:'2024 3e Excep', tx:"À propos des tumeurs hépatiques :", tp:'qcm', o:["Elles sont définies comme l'ensemble des proliférations tumorales bénignes ou malignes primitives ou secondaires se développant au niveau du foie.", "Elles peuvent être secondaires", "La nature du parenchyme hépatique adjacent à la tumeur est importante pour déterminer le type tumoral", "Peuvent être au dépend des éléments vasculaires du foie", "Peuvent être au dépend des voies biliaires intra-hépatiques"], a:[0,1,2,3,4]},
-  
-  // Session Mai 2023
-  {id:116, t:'hepatique', y:'2023 Mai', tx:"Concernant la métastase hépatique :", tp:'qcm', o:["L'origine la plus fréquente est digestive", "L'étude immunohistochimique de celle-ci peut aider dans la recherche du primitif", "L'orientation vers un primitif nécessite une corrélation avec les données cliniques et paracliniques du patient", "Elle survient essentiellement sur un foie non cirrhotique", "Il s'agit le plus souvent d'une lésion unique"], a:[0,1,2,3]},
-  {id:117, t:'hepatique', y:'2023 Mai', tx:"L'hépatoblastome :", tp:'qcm', o:["Est une tumeur embryonnaire qui atteint surtout l'enfant", "Se caractérise biologiquement par une augmentation sérique de l'AFP", "Se révèle par une hépatomégalie tumorale", "La biopsie hépatique confirmer le diagnostic", "Son traitement est basé sur la chirurgie première suivi de la chimiothérapie"], a:[0,1,2,3]},
-  {id:118, t:'hepatique', y:'2023 Mai', tx:"Le carcinome hépatocellulaire fibrolamellaire :", tp:'qcm', o:["Se caractérise par une tendance aux métastases", "Survient sur un foie sain", "Est la tumeur hépatique maligne primitive la plus fréquente", "Se caractérise par une fibrose lamellaire", "Est de meilleur pronostic que le carcinome hépatocellulaire classique"], a:[1,3,4]},
-  {id:119, t:'hepatique', y:'2023 Mai', tx:"Le kyste biliaire hépatique :", tp:'qcm', o:["Est une pathologie très courante touchant jusqu'à 18% de la population", "Est rencontrés plus fréquemment chez les femmes", "Sa Paroi est constituée d'un épithélium de type biliaire actif et sécrétant", "Doit être obligatoirement reséqué chirurgicalement en cas de découverte fortuite", "Est le seul diagnostic à évoquer devant une lésion kystique du foie"], a:[1,2]},
-  
-  // Session Juin 2023
-  {id:120, t:'hepatique', y:'2023 Juin', tx:"À propos des tumeurs hépatiques :", tp:'qcm', o:["Elles sont définies uniquement comme l'ensemble des proliférations tumorales se développant au dépend des constituants du tissu hépatique", "Elles peuvent être secondaires", "Sont souvent associées à une cirrhose hépatique si elles sont primitives", "Peuvent être au dépend des éléments vasculaires du foie", "Peuvent être au dépend des voies biliaires intra-hépatiques"], a:[1,2,3,4]},
-  {id:121, t:'hepatique', y:'2023 Juin', tx:"Concernant l'origine tissulaire des tumeurs primitives hépatiques :", tp:'qcm', o:["Le carcinome hépatocellulaire provient des structures hépatocytaires", "Le cholangiocarcinome provient des structures biliaires", "Les structures vasculaires ne donnent pas de tumeurs primitives hépatiques", "Il peut exister des tumeurs mixtes", "Il peut exister des tumeurs d'origine embryonnaire"], a:[0,1,3,4]},
-  {id:122, t:'hepatique', y:'2023 Juin', tx:"L'hépatoblastome :", tp:'qcm', o:["Est une tumeur carcinomateuse qui atteint surtout l'adulte", "Se caractérise biologiquement par une augmentation sérique de l'AFP", "Se révèle par une hépatomégalie tumorale", "La biopsie hépatique est contre indiquée", "Son traitement est basé sur la chirurgie première suivi de la chimiothérapie"], a:[1,2]},
-  {id:123, t:'hepatique', y:'2023 Juin', tx:"La localisation secondaire au niveau hépatique d'une tumeur maligne :", tp:'qcm', o:["Est plus fréquente qu'une tumeur primitive", "Est le plus souvent due à un néoplasme d'origine digestive", "Est le plus souvent multinodulaire", "Est rare", "Peut-être révélatrice d'un cancer"], a:[0,1,2,4]},
-  
-  // Session Janvier 2022
-  {id:124, t:'hepatique', y:'2022 Jan', tx:"L'angiome hépatique :", tp:'qcm', o:["Est une tumeur hépatique de nature vasculaire bénigne", "Est Souvent asymptomatique", "Son diagnostic est radiologique", "Sa ponction biopsie hépatique est contre-indiquée", "Son exérèse chirurgicale est obligatoire même s'il est asymptomatique"], a:[0,1,2,3]},
-  {id:125, t:'hepatique', y:'2022 Jan', tx:"Lors d'une localisation d'une métastase hépatique :", tp:'qcm', o:["L'origine la plus fréquente est osseuse", "L'étude immunohistochimique de celle-ci peut aider dans la recherche du primitif", "Elle survient essentiellement sur un foie non cirrhotique", "Il s'agit le plus souvent d'une lésion unique", "Il s'agit le plus souvent de lésions multiples de taille variable"], a:[1,2,4]},
-  {id:126, t:'hepatique', y:'2022 Jan', tx:"Le carcinome hépatocellulaire fibrolamellaire :", tp:'qcm', o:["Est de meilleur pronostic que le carcinome hépatocellulaire classique", "Survient sur un foie sain", "Se caractérise par une tendance aux métastases", "Est la tumeur hépatique maligne primitive la plus fréquente", "Se caractérise par une fibrose lamellaire de son stroma"], a:[0,1,4]},
-  {id:127, t:'hepatique', y:'2022 Jan', tx:"Le kyste biliaire hépatique :", tp:'qcm', o:["Sa paroi est constituée d'un revêtement malpighien pluristratifié kératinisé", "Est rencontrés plus fréquemment chez les femmes", "Sa Paroi est constituée d'un épithélium de type biliaire actif et sécrétant", "Doit être obligatoirement reséqué chirurgicalement même s'il est de petite taille et asymptomatique", "Est le seul diagnostic à évoquer devant une lésion kystique du foie"], a:[1,2]},
-  
-  // Session Janvier 2021
-  {id:128, t:'hepatique', y:'2021 Jan', tx:"Concernant l'origine tissulaire des tumeurs primitives hépatiques :", tp:'qcm', o:["Le carcinome hépatocellulaire provient des structures hépatocytaires", "Le cholangiocarcinome provient des structures biliaires", "Les structures vasculaires ne donnent pas de tumeurs primitives hépatiques", "Il peut exister des tumeurs mixtes", "Il peut exister des tumeurs d'origine embryonnaire"], a:[0,1,3,4]},
-  {id:129, t:'hepatique', y:'2021 Jan', tx:"La localisation secondaire au niveau hépatique d'une tumeur maligne :", tp:'qcm', o:["Est plus fréquente qu'une tumeur primitive", "Est le plus souvent due à un néoplasme d'origine digestive", "Est le plus souvent multinodulaire", "L'immunohistochimie à elle seule peut toujours déterminer le primitif avec précision", "Peut être révélatrice d'un cancer"], a:[0,1,2,4]},
-  
-  // Session Janvier 2020
-  {id:130, t:'hepatique', y:'2020 Jan', tx:"Concernant l'origine tissulaire des tumeurs primitives hépatiques :", tp:'qcm', o:["Le carcinome hépatocellulaire provient des structures hépatocytaires", "Le cholangiocarcinome provient des structures biliaires", "Les structures vasculaires ne donnent pas de tumeurs primitives hépatiques", "Il peut exister des tumeurs mixtes", "Il peut exister des tumeurs d'origine embryonnaire"], a:[0,1,3,4]},
-  {id:131, t:'hepatique', y:'2020 Jan', tx:"La localisation secondaire au niveau hépatique d'une tumeur maligne :", tp:'qcm', o:["Est plus fréquente qu'une tumeur primitive", "Est le plus souvent due à un néoplasme d'origine digestive", "Est le plus souvent multinodulaire", "L'immunohistochimie à elle seule peut toujours déterminer le primitif avec précision", "Peut être révélatrice d'un cancer"], a:[0,1,2,4]},
-  
-  // Session Janvier 2019
-  {id:132, t:'hepatique', y:'2019 Jan', tx:"Lors d'une localisation d'une métastase hépatique :", tp:'qcm', o:["L'origine la plus fréquente est digestive (estomac, colon, pancréas)", "L'étude immunohistochimique de celle ci peut aider dans la recherche du primitif", "L'origine la plus fréquente est prostatique chez l'homme, mammaire chez la femme", "Il s'agit le plus souvent d'une lésion unique de taille variable", "Il s'agit le plus souvent de lésions multiples de taille variable"], a:[0,1,4]},
-  {id:133, t:'hepatique', y:'2019 Jan', tx:"Le carcinome hépatocellulaire fibrolamellaire :", tp:'qcm', o:["Se caractérise par une tendance aux métastases", "Survient sur un foie sain", "Est la tumeur hépatique primitive la plus fréquente", "Se caractérise par une fibrose lamellaire", "Est de meilleur pronostic que le carcinome hépatocellulaire classique"], a:[1,3,4]},
-  {id:134, t:'hepatique', y:'2019 Jan', tx:"L'angiome hépatique :", tp:'qcm', o:["Est la tumeur hépatique bénigne la plus fréquente", "Est souvent de découverte fortuite", "Correspond à une prolifération vasculaire", "Correspond à une prolifération hépatocytaire", "La corrélation biopsie imagerie est nécessaire pour porter le diagnostic"], a:[0,1,2]},
-  
-  // Session Juin 2019
-  {id:135, t:'hepatique', y:'2019 Juin', tx:"À propos des tumeurs hépatiques :", tp:'qcm', o:["Elles sont définies uniquement comme l'ensemble des proliférations tumorales se développant au dépend des constituants du tissu hépatique", "Elles peuvent être secondaires", "La nature du parenchyme hépatique adjacent à la tumeur est importante", "Peuvent être au dépend des éléments vasculaires du foie", "Peuvent être au dépend des voies biliaires intra-hépatiques"], a:[1,2,3,4]},
-  {id:136, t:'hepatique', y:'2019 Juin', tx:"Concernant l'origine tissulaire des tumeurs primitives hépatiques :", tp:'qcm', o:["Le carcinome hépatocellulaire provient des structures hépatocytaires", "Le cholangiocarcinome provient des structures biliaires", "Les structures vasculaires ne donnent pas de tumeurs primitives hépatiques", "Il peut exister des tumeurs mixtes", "Il peut exister des tumeurs d'origine embryonnaire"], a:[0,1,3,4]},
-  {id:137, t:'hepatique', y:'2019 Juin', tx:"La localisation secondaire au niveau hépatique d'une tumeur maligne :", tp:'qcm', o:["Est plus fréquente qu'une tumeur primitive", "Est le plus souvent due à un néoplasme d'origine digestive", "Est le plus souvent multinodulaire", "Est rare", "Peut être révélatrice d'un cancer"], a:[0,1,2,4]}
 ];
 
 const LABELS={sein:'Cancer du sein',hepatique:'Tumeurs hépatiques',colorectal:'Cancer colorectal',poumon:'Cancer du poumon',ovaire:'Tumeur de l\'ovaire',polype:'Polype / Polypose'};
@@ -321,16 +289,17 @@ function renderCard(qid){
     const selArr=[...s].sort().join();
     const ansArr=[...q.a].sort().join();
     if(selArr===ansArr){
-      fb=`<div class="fb ok">✔ Parfait — toutes les bonnes réponses !</div>`;
+      fb=`<div class="fb ok"><i class="ti ti-circle-check" aria-hidden="true"></i> Parfait — toutes les bonnes réponses !</div>`;
     } else {
       const letters=q.a.map(i=>String.fromCharCode(65+i)).join(', ');
-      fb=`<div class="fb nok">✖ Réponses correctes : <strong>${letters}</strong></div>`;
+      fb=`<div class="fb nok"><i class="ti ti-circle-x" aria-hidden="true"></i> Réponses correctes : <strong>${letters}</strong></div>`;
     }
   }
 
   el.className='q'+(ch?' done':'');
   el.innerHTML=`
     <div class="qmeta">
+      <span class="qn">Q${q.id}</span>
       <span class="badge b-${q.t}">${LABELS[q.t]}</span>
       ${q.tp==='qcu'?'<span class="badge b-qcu">QCU</span>':''}
       <span class="badge b-year">${q.y}</span>
@@ -359,4 +328,16 @@ function resetAll(){
 }
 
 render();updateStats();
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
